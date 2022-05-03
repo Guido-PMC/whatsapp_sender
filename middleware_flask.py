@@ -10,7 +10,7 @@ print("Zabbix Adress: "+zabbix_address)
 cantidad_envios={}
 diccionario={}
 salida={}
-@app.route('/wallet/<wallet_id>', methods = ['POST'])
+@app.route('/', methods = ['POST'])
 def wallet(wallet_id):
     if request.method == 'POST':
         data = request.json # a multidict containing POST data
