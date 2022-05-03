@@ -11,7 +11,7 @@ cantidad_envios={}
 diccionario={}
 salida={}
 @app.route('/', methods = ['POST'])
-def wallet(wallet_id):
+def wallet():
     if request.method == 'POST':
         data = request.json # a multidict containing POST data
         return str("1")
