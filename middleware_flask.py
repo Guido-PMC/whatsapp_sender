@@ -12,11 +12,11 @@ cantidad_envios={}
 diccionario={}
 salida={}
 @app.route('/test', methods = ['POST'])
-def wallet():
+def test():
     if request.method == 'POST':
         data = request.json # a multidict containing POST data
-        response = Response(status=200)
-        # need to set JSON like {'username': 'febin'}
-        return response
+        print("Accionado")
+        data = {'name': 'Guido'}
+        return jsonify(data)
 if __name__ == '__main__':
    app.run(host= '0.0.0.0', port=5001)
