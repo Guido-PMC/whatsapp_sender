@@ -14,6 +14,6 @@ salida={}
 def wallet():
     if request.method == 'POST':
         data = request.json # a multidict containing POST data
-        return str("1")
+        return (1)
 if __name__ == '__main__':
    app.run(host= '0.0.0.0', port=5001)
