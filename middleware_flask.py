@@ -5,7 +5,7 @@ import json
 import os
 
 app = Flask(__name__)
-zabbix_address = os.environ['ZABBIX']
+zabbix_address = "1.1.1.1"
 print("Zabbix Adress: "+zabbix_address)
 cantidad_envios={}
 diccionario={}
@@ -15,7 +15,7 @@ def wallet(wallet_id):
     if request.method == 'GET':
         for x in diccionario:
             stream = os.popen("zabbix_sender -z "+zabbix_address+"    -s '"+str(x)+"' -k application.hash -o '"+str(diccionario[x])+"'")
-            output = stream.read()
+            output = "stream.read()"
             print("Wallet: "+str(x)+" Hash: "+str(diccionario[x])+" Cantidad envios: "+str(cantidad_envios[x]))
             salida[x] = diccionario[x]
             diccionario[x] = int(0)
