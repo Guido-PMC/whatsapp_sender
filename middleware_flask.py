@@ -6,16 +6,11 @@ import json
 import os
 
 app = Flask(__name__)
-zabbix_address = "1.1.1.1"
-print("Zabbix Adress: "+zabbix_address)
-cantidad_envios={}
-diccionario={}
-salida={}
-@app.route('/test', methods = ['POST'])
+@app.route('/test', methods = ['GET','POST'])
 def test():
     if request.method == 'POST':
         data = request.json # a multidict containing POST data
-        print("Accionado")
+        print(data)
         data = {'name': 'Guido'}
         return jsonify(data)
 if __name__ == '__main__':
