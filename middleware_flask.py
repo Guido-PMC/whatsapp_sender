@@ -27,6 +27,7 @@ app = Flask(__name__)
 def test():
     if request.method == 'POST':
         data = request.json # a multidict containing POST data
+        print(data)
         row = list(filter(lambda i:i!="", data.values()))
         append_row("Contactos WEB - PMC", "Hoja 1", row)
         data = {'name': 'Guido'}
