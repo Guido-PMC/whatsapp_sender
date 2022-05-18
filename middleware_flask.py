@@ -66,7 +66,7 @@ def test():
         string_wsap = string_wsap.replace('XXXXXXXXX', whatsappize_number(data["tel"]))
         new_json = {"fecha": datetime.today().strftime('%d-%m %H:%M'),"nombre": data["nombre"],"mail":data["email"], "celular":string_wsap, "servicio":data["servicio"],"detalle":data["rig-tipo-presupuesto"]+" "+data["rig-tipo-dinero"]+" "+data["rig-tipo-rentabilidad"]+" "+data["rig-tipo-megahash"]+" "+data["housing-placas"]+" "+data["housing-rigs"]+" "+data["exchange-operacion"]+" "+data["exchange-monto"]+" "+data["mensaje"] }
         row = list(new_json.values())
-        append_row("Contactos WEB - PMC", "test", row)
+        append_row("Contactos WEB - PMC", "Hoja 1", row)
         data = {'name': 'Guido'}
         return jsonify(data)
 if __name__ == '__main__':
