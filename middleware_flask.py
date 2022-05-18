@@ -41,6 +41,19 @@ def append_row(sheet,worksheet,new_row):
     sheet_instance = work_sheet.worksheet(worksheet)
     sheet_instance.append_row(new_row, value_input_option="USER_ENTERED")
     return True
+
+def whatsappize_number(number):
+    if (number.startswith("549")): #NUMERO COMPLETO PARA WASAP
+        return number
+    elif number.startswith("54"):#NUMERO COMPLETO OTRA PROVINCIA
+        return number
+    elif number.startswith("11"): #NUMERO BASICO BS AS
+        return ("549"+number)
+    else: #NUMEROS BASICOS OTRAS PROVINCIAS
+        return ("549"+number)
+
+
+
 app = Flask(__name__)
 @app.route('/test', methods = ['GET','POST'])
 def test():
@@ -49,9 +62,11 @@ def test():
         print("Imprimo la data \n\n")
         print(datetime.today().strftime('%d-%m %H:%M'))
         print(data)
-        new_json = {"fecha": datetime.today().strftime('%d-%m %H:%M'),"nombre": data["nombre"],"mail":data["email"], "celular":data["tel"], "servicio":data["servicio"],"detalle":data["rig-tipo-presupuesto"]+" "+data["rig-tipo-dinero"]+" "+data["rig-tipo-rentabilidad"]+" "+data["rig-tipo-megahash"]+" "+data["housing-placas"]+" "+data["housing-rigs"]+" "+data["exchange-operacion"]+" "+data["exchange-monto"]+" "+data["mensaje"] }
+        string_wsap = "https://web.whatsapp.com/send?phone=XXXXXXXXX&text=Hola%20como%20estas?%20Me%20comunico%20de%20Pilar%20Mining%20CO"
+        string_wsap = string_wsap.replace('XXXXXXXXX', whatsappize_number(data["tel"]))
+        new_json = {"fecha": datetime.today().strftime('%d-%m %H:%M'),"nombre": data["nombre"],"mail":data["email"], "celular":string_wsap, "servicio":data["servicio"],"detalle":data["rig-tipo-presupuesto"]+" "+data["rig-tipo-dinero"]+" "+data["rig-tipo-rentabilidad"]+" "+data["rig-tipo-megahash"]+" "+data["housing-placas"]+" "+data["housing-rigs"]+" "+data["exchange-operacion"]+" "+data["exchange-monto"]+" "+data["mensaje"] }
         row = list(new_json.values())
-        append_row("Contactos WEB - PMC", "Hoja 1", row)
+        append_row("Contactos WEB - PMC", "test", row)
         data = {'name': 'Guido'}
         return jsonify(data)
 if __name__ == '__main__':
