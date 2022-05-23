@@ -49,8 +49,11 @@ def whatsappize_number(number):
         return number
     elif number.startswith("11"): #NUMERO BASICO BS AS
         return ("549"+number)
+    elif number.startswith("0"): #LE PONEN EL 0 ADELANTE
+        return("549"+number[1:])
     else: #NUMEROS BASICOS OTRAS PROVINCIAS
         return ("549"+number)
+
 
 
 
